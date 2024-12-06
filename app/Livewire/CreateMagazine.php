@@ -20,6 +20,7 @@ class CreateMagazine extends Component
         'weapon_id' => '',
         'in_stock' => '',
     ];
+
     public $search = '';
 
     public function render()
@@ -34,16 +35,18 @@ class CreateMagazine extends Component
     }
 
     public function save()
-    {
-        $magazine = new Magazine();
-        $magazine->code = $this->code;
-        $magazine->weapon_id = $this->weapon_id;
-        $magazine->in_stock = $this->in_stock;
-        $magazine->save();
+{
+    $magazine = new Magazine();
+    $magazine->code = $this->code;
+    $magazine->weapon_id = $this->weapon_id;
+    $magazine->in_stock = 'disponible'; // Valor predeterminado
 
-        $this->reset(['code', 'weapon_id', 'in_stock']);
-        $this->modalC = false;
-    }
+    $magazine->save();
+
+    $this->reset(['code', 'weapon_id']);
+    $this->modalC = false;
+}
+
 
     public function updated($propertyName)
     {

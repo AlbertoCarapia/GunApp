@@ -33,7 +33,7 @@
                         <td class="border px-4 py-2">{{ $weapon->id }}</td>
                         <td class="border px-4 py-2">{{ $weapon->code }}</td>
                         <td class="border px-4 py-2">{{ $weapon->type->name }}</td>
-                        <td class="border px-4 py-2">{{ $weapon->in_stock ? 'Sí' : 'No' }}</td>
+                        <td class="border px-4 py-2">{{ $weapon->in_stock}}</td>
                         <td class="border px-4 py-2 text-center">
                             <button
                                 class="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
@@ -88,15 +88,6 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="mt-4">
-                    <label for="in_stock" class="block text-sm font-medium text-gray-700">En Inventario</label>
-                    <input
-                        type="checkbox"
-                        id="in_stock"
-                        wire:model="in_stock"
-                        class="mt-1"
-                    />
-                </div>
                 <div class="mt-4 flex justify-end">
                     <button
                         class="px-4 py-2 bg-gray-300 rounded mr-2 hover:bg-gray-400"
@@ -143,7 +134,7 @@
                 <div class="mt-4">
                     <label for="edit_in_stock" class="block text-sm font-medium text-gray-700">En Inventario</label>
                     <input
-                        type="checkbox"
+                        type="text"
                         id="edit_in_stock"
                         wire:model="Edit.in_stock"
                         class="mt-1"

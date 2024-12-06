@@ -9,7 +9,7 @@ class Record extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['officer_id', 'weapon_id', 'magazine_id', 'issue_date', 'return_date'];
+    protected $fillable = ['officer_id', 'weapon_id', 'magazine_id', 'issue_date'];
 
     public function officer()
     {
@@ -26,9 +26,5 @@ class Record extends Model
         return $this->belongsTo(Magazine::class, 'magazine_id');
     }
 
-    public function delivery()
-    {
-        return $this->hasOne(Delivery::class, 'record_id');
-    }
 }
 

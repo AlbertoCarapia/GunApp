@@ -7,13 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Officer extends Model
 {
+
     use HasFactory;
 
     protected $fillable = ['name', 'license_id'];
 
-    public function license()
+    public function licenses()
     {
-        return $this->belongsTo(LType::class, 'license_id');
+        return $this->belongsToMany(LType::class, 'ltype_officer', 'officer_id', 'ltype_id');
     }
 
     public function records()

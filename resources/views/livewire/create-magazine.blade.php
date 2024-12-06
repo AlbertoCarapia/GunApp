@@ -83,15 +83,6 @@
                         class="mt-1 p-2 border rounded w-full"
                     />
                 </div>
-                <div class="mt-4">
-                    <label for="in_stock" class="block text-sm font-medium text-gray-700">En Stock</label>
-                    <input
-                        type="text"
-                        id="in_stock"
-                        wire:model="in_stock"
-                        class="mt-1 p-2 border rounded w-full"
-                    />
-                </div>
                 <div class="mt-4 flex justify-end">
                     <button
                         class="px-4 py-2 bg-gray-300 rounded mr-2 hover:bg-gray-400"
@@ -134,7 +125,7 @@
                 <div class="mt-4">
                     <label for="edit_in_stock" class="block text-sm font-medium text-gray-700">En Stock</label>
                     <input
-                        type="number"
+                        type="text"
                         id="edit_in_stock"
                         wire:model="Edit.in_stock"
                         class="mt-1 p-2 border rounded w-full"

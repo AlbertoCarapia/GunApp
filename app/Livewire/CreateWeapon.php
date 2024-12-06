@@ -41,16 +41,18 @@ class CreateWeapon extends Component
     }
 
     public function save()
-    {
-        $weapon = new Weapon();
-        $weapon->code = $this->code;
-        $weapon->type_id = $this->type_id;
-        $weapon->in_stock = $this->in_stock;
-        $weapon->save();
+{
+    $weapon = new Weapon();
+    $weapon->code = $this->code;
+    $weapon->type_id = $this->type_id;
+    $weapon->in_stock = 'disponible'; // Valor predeterminado
 
-        $this->reset(['code', 'type_id', 'in_stock']);
-        $this->modalC = false;
-    }
+    $weapon->save();
+
+    $this->reset(['code', 'type_id']);
+    $this->modalC = false;
+}
+
 
     public function updated($propertyName)
     {

@@ -1,4 +1,3 @@
-<!-- resources/views/livewire/live-officer.blade.php -->
 <div>
     <div class="mb-4 flex justify-between">
         <!-- Input para búsqueda -->
@@ -24,7 +23,7 @@
                 <tr class="bg-gray-100">
                     <th class="border px-4 py-2">ID</th>
                     <th class="border px-4 py-2">Nombre</th>
-                    <th class="border px-4 py-2">Licencia</th>
+                    <th class="border px-4 py-2">Licencias</th>
                     <th class="border px-4 py-2">Acciones</th>
                 </tr>
             </thead>
@@ -33,7 +32,9 @@
                     <tr>
                         <td class="border px-4 py-2">{{ $officer->id }}</td>
                         <td class="border px-4 py-2">{{ $officer->name }}</td>
-                        <td class="border px-4 py-2">{{ $officer->license->name ?? 'N/A' }}</td>
+                        <td class="border px-4 py-2">
+                            {{ $officer->licenses->pluck('name')->join(', ') ?? 'N/A' }}
+                        </td>
                         <td class="border px-4 py-2 text-center">
                             <!-- Botón editar -->
                             <button
@@ -78,16 +79,20 @@
                     />
                 </div>
                 <div class="mt-4">
-                    <label for="license_id" class="block text-sm font-medium text-gray-700">Tipo de Licencia</label>
-                    <select
-                        id="license_id"
-                        wire:model="license_id"
-                        class="mt-1 p-2 border rounded w-full">
-                        <option value="">Seleccione una licencia</option>
+                    <label class="block text-sm font-medium text-gray-700">Tipos de Licencia</label>
+                    <div class="mt-2 grid grid-cols-2 gap-2">
                         @foreach ($licenses as $license)
-                            <option value="{{ $license->id }}">{{ $license->name }}</option>
+                            <label class="inline-flex items-center">
+                                <input
+                                    type="checkbox"
+                                    value="{{ $license->id }}"
+                                    wire:model="license_ids"
+                                    class="form-checkbox h-5 w-5 text-blue-600"
+                                />
+                                <span class="ml-2 text-gray-700">{{ $license->name }}</span>
+                            </label>
                         @endforeach
-                    </select>
+                    </div>
                 </div>
                 <div class="mt-4 flex justify-end">
                     <button
@@ -120,16 +125,20 @@
                     />
                 </div>
                 <div class="mt-4">
-                    <label for="edit_license_id" class="block text-sm font-medium text-gray-700">Tipo de Licencia</label>
-                    <select
-                        id="edit_license_id"
-                        wire:model="Edit.license_id"
-                        class="mt-1 p-2 border rounded w-full">
-                        <option value="">Seleccione una licencia</option>
+                    <label class="block text-sm font-medium text-gray-700">Tipos de Licencia</label>
+                    <div class="mt-2 grid grid-cols-2 gap-2">
                         @foreach ($licenses as $license)
-                            <option value="{{ $license->id }}">{{ $license->name }}</option>
+                            <label class="inline-flex items-center">
+                                <input
+                                    type="checkbox"
+                                    value="{{ $license->id }}"
+                                    wire:model="Edit.license_ids"
+                                    class="form-checkbox h-5 w-5 text-blue-600"
+                                />
+                                <span class="ml-2 text-gray-700">{{ $license->name }}</span>
+                            </label>
                         @endforeach
-                    </select>
+                    </div>
                 </div>
                 <div class="mt-4 flex justify-end">
                     <button

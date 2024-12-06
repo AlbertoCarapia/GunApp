@@ -13,6 +13,6 @@ class LType extends Model
 
     public function officers()
     {
-        return $this->hasMany(Officer::class, 'license_id');
+        return $this->belongsToMany(Officer::class, 'ltype_officer', 'ltype_id', 'officer_id');
     }
 }

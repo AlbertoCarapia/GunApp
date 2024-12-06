@@ -13,7 +13,6 @@ class CreateRecordsTable extends Migration
             $table->foreignId('weapon_id')->nullable()->constrained('weapons')->cascadeOnDelete();
             $table->foreignId('magazine_id')->nullable()->constrained('magazines')->cascadeOnDelete();
             $table->datetime('issue_date');
-            $table->datetime('return_date')->nullable();
             $table->timestamps();
         });
     }
