@@ -24,7 +24,6 @@ class CreateMagazine extends Component
     public $rules = [
         'code' => 'required',
         'weapon_id' => 'required',
-        'in_stock' => 'required',
     ];
 
     public $search = '';

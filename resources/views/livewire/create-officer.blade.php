@@ -1,12 +1,7 @@
 <div>
     <div class="mb-4 flex justify-between">
         <!-- Input para búsqueda -->
-        <input
-            type="text"
-            wire:model.debounce.500ms="search"
-            placeholder="Buscar oficiales..."
-            class="px-4 py-2 border rounded w-full max-w-md"
-        />
+        <x-input name="search-category" placeholder="Busqueda" wire:model.live='search' />
 
         <!-- Botón para abrir modal de creación -->
         <button

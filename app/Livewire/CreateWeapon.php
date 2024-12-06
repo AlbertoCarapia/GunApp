@@ -26,7 +26,6 @@ class CreateWeapon extends Component
     protected $rules = [
         'code' => 'required|string|max:255|unique:weapons,code',
         'type_id' => 'required|exists:weapon_types,id',
-        'in_stock' => 'required|string',
     ];
 
     public function render()

@@ -1,12 +1,7 @@
 <div>
     <!-- Barra de búsqueda y botón de crear -->
     <div class="mb-4 flex justify-between">
-        <input
-            type="text"
-            wire:model.debounce.500ms="search"
-            placeholder="Buscar tipos de licencia..."
-            class="px-4 py-2 border rounded w-full max-w-md"
-        />
+        <x-input name="search-category" placeholder="Busqueda" wire:model.live='search' />
 
         <button
             class="ml-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-gray-700"

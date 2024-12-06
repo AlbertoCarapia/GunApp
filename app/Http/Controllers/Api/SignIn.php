@@ -10,53 +10,46 @@ use Illuminate\Support\Facades\Hash;
 class SignIn extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Función para mostrar una lista de recursos (no implementada actualmente).
      */
     public function index()
     {
-        // Esta función actualmente no tiene implementación.
-        // Podría ser utilizada para listar los usuarios o recursos relacionados.
+        // Esta función podría usarse en el futuro para listar usuarios o recursos relacionados.
     }
 
     /**
-     * Función para manejar el acceso de usuarios a la aplicación.
+     * Maneja el inicio de sesión de los usuarios en la aplicación.
      */
     public function signin(Request $request)
     {
-        // Valida los datos enviados en el cuerpo de la solicitud (request).
-        // Se asegura de que el correo electrónico sea obligatorio y tenga un formato válido,
-        // así como que la contraseña sea proporcionada.
+        // Realiza la validación de los datos recibidos en la solicitud.
+        // Verifica que se proporcione un correo electrónico válido y una contraseña.
         $request->validate([
-            'email' => 'required|email',  // El campo 'email' es obligatorio y debe ser un correo válido.
-            'password' => 'required'     // El campo 'password' es obligatorio.
+            'email' => 'required|email',  // Campo obligatorio y debe ser un correo válido.
+            'password' => 'required'     // Campo obligatorio para la contraseña.
         ]);
 
-        // Busca al usuario en la base de datos usando el correo electrónico proporcionado.
-        // Devuelve el primer registro coincidente o 'null' si no existe.
+        // Busca un usuario en la base de datos que coincida con el correo electrónico proporcionado.
         $user = User::where('email', $request->email)->first();
 
-        // Verifica si:
-        // - No se encontró un usuario con ese correo electrónico.
-        // - La contraseña proporcionada no coincide con la contraseña almacenada (encriptada).
-        // Si alguna de estas condiciones no se cumple, responde con un mensaje de error y un código HTTP 401 (no autorizado).
+        // Verifica si el usuario existe y si la contraseña proporcionada coincide con la almacenada (encriptada).
+        // Si no, responde con un error de autenticación (código HTTP 401).
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json([
-                'message' => 'Las credenciales son incorrectas', // Mensaje de error.
-                401                                           // Código HTTP 401.
-            ]);
+                'message' => 'Las credenciales son incorrectas', // Mensaje de error en caso de fallo.
+            ], 401); // Código de estado para "No autorizado".
         }
 
-        // Si las credenciales son correctas, genera un token de autenticación para el usuario.
-        // 'auth_token' es el nombre asignado al token.
-        // 'plainTextToken' devuelve el token en formato de texto plano.
+        // Genera un token de acceso para el usuario autenticado.
+        // El token será utilizado para futuras solicitudes autenticadas.
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        // Responde con un código HTTP 200 (éxito) y devuelve un JSON que contiene:
-        // - El token de acceso generado.
-        // - El tipo de token ('Bearer'), que indica el esquema de autenticación utilizado.
+        // Responde con un código de éxito (200) y devuelve un JSON que incluye:
+        // - El token generado para el usuario.
+        // - El tipo de token ('Bearer'), que se usa en el esquema de autenticación.
         return response()->json([
-            'access_token' => $token,  // El token generado para el usuario.
-            'token_type' => 'Bearer', // El tipo de token.
+            'access_token' => $token,  // Token generado para el usuario.
+            'token_type' => 'Bearer', // Indica el esquema de autenticación utilizado.
         ]);
     }
 }

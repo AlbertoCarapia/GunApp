@@ -78,8 +78,7 @@
         <h2 class="text-xl font-semibold mb-4">Listado de Registros</h2>
 
         <!-- Búsqueda -->
-        <input wire:model="search" type="text" placeholder="Buscar..."
-            class="mb-4 border-gray-300 rounded w-full px-4 py-2" />
+        <x-input name="search-category" placeholder="Busqueda" wire:model.live='search' />
 
         <!-- Tabla -->
         <table class="table-auto w-full border-collapse border border-gray-300">

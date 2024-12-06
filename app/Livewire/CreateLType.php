@@ -22,7 +22,8 @@ class CreateLType extends Component
 
     public function render()
     {
-        $licenseTypes = LType::where('name', 'like', '%' . $this->search . '%')->paginate(5);
+        $licenseTypes = LType::where('name', 'like', '%' . $this->search . '%')
+                             ->paginate(5);
 
         return view('livewire.create-l-type', [
             'licenseTypes' => $licenseTypes,
