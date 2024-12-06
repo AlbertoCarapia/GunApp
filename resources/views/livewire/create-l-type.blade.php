@@ -69,6 +69,7 @@
                         id="name"
                         wire:model="name"
                         class="mt-1 p-2 border rounded w-full"
+                        required
                     />
                 </div>
                 <div class="mt-4 flex justify-end">

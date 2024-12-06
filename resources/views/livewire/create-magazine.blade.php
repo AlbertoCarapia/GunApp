@@ -72,6 +72,7 @@
                         id="code"
                         wire:model="code"
                         class="mt-1 p-2 border rounded w-full"
+                        required
                     />
                 </div>
                 <div class="mt-4">
@@ -81,6 +82,7 @@
                         id="weapon_id"
                         wire:model="weapon_id"
                         class="mt-1 p-2 border rounded w-full"
+                        required
                     />
                 </div>
                 <div class="mt-4 flex justify-end">
@@ -111,6 +113,7 @@
                         id="edit_code"
                         wire:model="Edit.code"
                         class="mt-1 p-2 border rounded w-full"
+                        required
                     />
                 </div>
                 <div class="mt-4">
@@ -120,6 +123,7 @@
                         id="edit_weapon_id"
                         wire:model="Edit.weapon_id"
                         class="mt-1 p-2 border rounded w-full"
+                        required
                     />
                 </div>
                 <div class="mt-4">
@@ -129,6 +133,7 @@
                         id="edit_in_stock"
                         wire:model="Edit.in_stock"
                         class="mt-1 p-2 border rounded w-full"
+                        required
                     />
                 </div>
                 <div class="mt-4 flex justify-end">

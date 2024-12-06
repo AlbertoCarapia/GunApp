@@ -23,6 +23,12 @@ class CreateWeapon extends Component
     ];
     public $search = '';
 
+    protected $rules = [
+        'code' => 'required|string|max:255|unique:weapons,code',
+        'type_id' => 'required|exists:weapon_types,id',
+        'in_stock' => 'required|string',
+    ];
+
     public function render()
     {
         $weapons = Weapon::with('type')
@@ -42,6 +48,9 @@ class CreateWeapon extends Component
 
     public function save()
 {
+
+    $this->validate();
+
     $weapon = new Weapon();
     $weapon->code = $this->code;
     $weapon->type_id = $this->type_id;

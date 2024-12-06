@@ -76,6 +76,7 @@
                         id="name"
                         wire:model="name"
                         class="mt-1 p-2 border rounded w-full"
+                        required
                     />
                 </div>
                 <div class="mt-4">
@@ -88,6 +89,7 @@
                                     value="{{ $license->id }}"
                                     wire:model="license_ids"
                                     class="form-checkbox h-5 w-5 text-blue-600"
+                                    required
                                 />
                                 <span class="ml-2 text-gray-700">{{ $license->name }}</span>
                             </label>
@@ -122,6 +124,7 @@
                         id="edit_name"
                         wire:model="Edit.name"
                         class="mt-1 p-2 border rounded w-full"
+                        required
                     />
                 </div>
                 <div class="mt-4">
@@ -134,6 +137,7 @@
                                     value="{{ $license->id }}"
                                     wire:model="Edit.license_ids"
                                     class="form-checkbox h-5 w-5 text-blue-600"
+                                    required
                                 />
                                 <span class="ml-2 text-gray-700">{{ $license->name }}</span>
                             </label>

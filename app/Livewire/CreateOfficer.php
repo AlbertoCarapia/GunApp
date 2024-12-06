@@ -21,6 +21,11 @@ class CreateOfficer extends Component
         'name' => '',
         'license_ids' => [], // Array para múltiples licencias en la edición
     ];
+
+    protected $rules = [
+        'name' => 'required',
+        'license_ids' => 'required',
+    ];
     public $search = '';
 
     public function render()
@@ -41,6 +46,7 @@ class CreateOfficer extends Component
 
     public function save()
     {
+        $this->validate();
         $officer = Officer::create([
             'name' => $this->name,
             'license_id' => $this->license_ids ? $this->license_ids[0] : 1, // Aquí 1 es un ID por defecto

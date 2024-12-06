@@ -116,6 +116,7 @@
                         id="edit_code"
                         wire:model="Edit.code"
                         class="mt-1 p-2 border rounded w-full"
+                        required
                     />
                 </div>
                 <div class="mt-4">
@@ -124,6 +125,7 @@
                         id="edit_type_id"
                         wire:model="Edit.type_id"
                         class="mt-1 p-2 border rounded w-full"
+                        required
                     >
                         <option value="">Seleccionar tipo</option>
                         @foreach ($types as $type)

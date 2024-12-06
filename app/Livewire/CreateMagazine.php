@@ -21,6 +21,12 @@ class CreateMagazine extends Component
         'in_stock' => '',
     ];
 
+    public $rules = [
+        'code' => 'required',
+        'weapon_id' => 'required',
+        'in_stock' => 'required',
+    ];
+
     public $search = '';
 
     public function render()
@@ -36,10 +42,12 @@ class CreateMagazine extends Component
 
     public function save()
 {
+    $this->validate();
+
     $magazine = new Magazine();
     $magazine->code = $this->code;
     $magazine->weapon_id = $this->weapon_id;
-    $magazine->in_stock = 'disponible'; // Valor predeterminado
+    $magazine->in_stock = 'disponible';
 
     $magazine->save();
 

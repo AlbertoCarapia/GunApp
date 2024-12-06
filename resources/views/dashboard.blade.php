@@ -30,18 +30,6 @@
                 <div class="rounded-lg bg-white">
                     @livewire('create-l-type')
                 </div>
-                <br>
-                <br>
-                <div class="rounded-lg bg-white">
-                    @livewire('record-controller')
-                </div>
-                <br>
-                <br>
-                <div class="rounded-lg bg-white">
-                    @livewire('record-management')
-                </div>
-                <br>
-                <br>
         </div>
     </div>
 </x-app-layout>
